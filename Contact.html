@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Menu - Delicious Eats</title>
+    </head>
+<body> 
+<header> 
+<img src='c:\Users\macky\Desktop\Delicious Eats (Project)\Images\5a480435-d456-47c7-b3f6-4e7baaa196ef.jpg' alt='Delicious Eats Logo' id='logo'> <!-- Logo Image --> 
+<h1>Contact Us</h1> 
+<nav> 
+<ul> 
+<li><a href='Index Delicious Eats.html'>Home</a></li> 
+<li><a href='About Delicious Eats.html'>About Us</a></li> 
+<li><a href='Menu Delicious Eats.html'>Menu</a></li> 
+<li><a href='Contact Delicious Eats.html'>Contact</a></li> 
+</ul> 
+</nav> 
+</header>
+
+<main > 
+<h2 >Get in Touch!</h2 > 
+
+<p>Email us at: info@deliciouseats.com or call us at: (123) 456-7890.</p>
+
+<form id='contact-form'>
+  Name:  <input type='text' name='name' required />
+  Email:  <input type='email' name='email' required />
+  Message:  <textarea name='message' required ></textarea >
+  <button type='submit'>Send Message!</button >
+  </form >
+  <div id='response'></div >
+
+<!-- Chatbot -->
+<div id='chatbot'>
+   <div id='chat-header'>Chat with us!</div >
+   <div id='chat-body'></div >
+   <input type='text' id='chat-input' placeholder='Type your message...' />
+   <button id='send-btn'>Send</button >
+  </div >
+
+<footer > 
+<p>&copy; 2025 Delicious Eats. All rights reserved.</p > 
+</footer > 
+
+<script src='Jscript.ts'></script > 
+
+<script >
+const form = document.getElementById('contact-form');
+form.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevents the default form submission
+    const responseDiv = document.getElementById('response');
+    responseDiv.textContent = 'Thank you for your message!';
+});
+const chatInput = document.getElementById('chat-input');
+const chatBody = document.getElementById('chat-body');
+const sendBtn = document.getElementById('send-btn');
+
+sendBtn.addEventListener('click', function() {
+    const userMessage = chatInput.value;
+    if (userMessage.trim()) {
+        chatBody.innerHTML += `<div class='user-message'>${userMessage}</div>`;
+        chatInput.value = '';
+        // Simulate a bot response after a delay
+        setTimeout(() => {
+            chatBody.innerHTML += `<div class='bot-message'>Thank you for your message! How can I assist you?</div>`;
+            chatBody.scrollTop = chatBody.scrollHeight; // Scroll to bottom
+        }, 1000);
+    }
+});
+</script >
+
+<!-- Chatbot Script -->
+<script>
+// Add your chatbot functionality here
+
+// Chatbot functionality
+document.querySelectorAll('#send-btn').forEach(button => { // Attach event listener to all send buttons
+     button.addEventListener('click', function() { // Add click event listener
+         const chatInput = this.previousElementSibling; // Get input field before button
+         const userMessage = chatInput.value.trim(); // Get user input value
+
+         if (userMessage) { // Check if input is not empty
+             const chatBody = this.parentNode.previousElementSibling; // Get chat body before input field
+
+             // Append user message to chat body
+             chatBody.innerHTML += `<div class='user-message'>${userMessage}</div>`;
+             chatInput.value = ''; // Clear input field
+
+             // Simulate bot response after a delay
+             setTimeout(() => {
+                 chatBody.innerHTML += `<div class='bot-message'>Thank you for your message! How can I assist you?</div>`;
+                 chatBody.scrollTop = chatBody.scrollHeight; // Scroll to bottom of the chat body
+             }, 1000); // Delay of one second before bot responds
+         }
+     });
+});
+</script >
+
+<style >
+/* Existing styles... */
+#logo {
+   width: 150px; /* Adjust logo size */
+}
+.food-item {
+   width: 100%; /* Full width for food items */
+   height: auto; /* Maintain aspect ratio */
+}
+.team-photo {
+   width: 100%; /* Full width for team photo */
+   height: auto; /* Maintain aspect ratio */
+}
+.banner {
+   width: 100%; /* Full width for banner image */
+   height: auto; /* Maintain aspect ratio */
+}
+...
